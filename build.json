@@ -1,0 +1,22 @@
+{
+  "library": "FormMaterials",
+  "libraryTarget": "umd",
+  "sourceMap": true,
+  "alias": {
+    "@": "./src/components",
+    "@components": "./src/components"
+  },
+  "plugins": [
+    ["build-plugin-component-multiple", {
+      "themePackage": "@alifd/theme-2"
+    }],
+    [
+      "@alilc/build-plugin-alt",
+      {
+        "type": "plugin",
+        "inject": true,
+        "openUrl": "http://localhost:5556?debug"
+      }
+    ]
+  ]
+}
