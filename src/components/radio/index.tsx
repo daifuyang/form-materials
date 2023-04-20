@@ -1,23 +1,19 @@
 import React, { FC } from 'react';
-import { Form, Radio as AntRadio } from 'antd';
+import { Radio as AntRadio } from 'antd';
 
-interface RadioProps {}
+interface RadioProps {
+  __designMode: string;
+}
 
 const Radio: FC<RadioProps> = (props: any) => {
-  const { label = '表单项', ...otherProps } = props;
+  const { __designMode, options = [] } = props;
 
-  const options = [
-    { label: 'Apple', value: 'Apple' },
-    { label: 'Pear', value: 'Pear' },
-    { label: 'Orange', value: 'Orange', disabled: false },
-  ];
+  if (__designMode === 'design' && options.length === 0) {
+    return <div style={{ color: '#999', cursor: 'pointer' }}>[单选框]请在右侧配置中指定可选项</div>;
+  }
 
-  return (
-    <Form.Item label={label} {...otherProps}>
-      <AntRadio.Group options={options} defaultValue={['Apple']} />
-    </Form.Item>
-  );
+  return <AntRadio.Group {...props} />;
 };
 
-Radio.displayName = 'Input';
+Radio.displayName = 'Radio';
 export default Radio;

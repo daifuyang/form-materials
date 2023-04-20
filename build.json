@@ -7,9 +7,12 @@
     "@components": "./src/components"
   },
   "plugins": [
-    ["build-plugin-component-multiple", {
-      "themePackage": "@alifd/theme-2"
-    }],
+    [
+      "build-plugin-component",
+      {
+        "themePackage": "@alifd/theme-2"
+      }
+    ],
     [
       "@alilc/build-plugin-alt",
       {

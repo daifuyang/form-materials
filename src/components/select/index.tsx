@@ -1,38 +1,16 @@
 import React, { FC } from 'react';
-import { Form, Select as AntSelect } from 'antd';
+import { Select as AntSelect } from 'antd';
 
 interface SelectProps {
-
+  __designMode: string;
 }
 
 const Select: FC<SelectProps> = (props: any) => {
-  const { label = '表单项', ...otherProps } = props;
-
-  const options = [
-    {
-      value: 'jack',
-      label: 'Jack',
-    },
-    {
-      value: 'lucy',
-      label: 'Lucy',
-    },
-    {
-      value: 'disabled',
-      disabled: true,
-      label: 'Disabled',
-    },
-    {
-      value: 'Yiminghe',
-      label: 'yiminghe',
-    },
-  ]
-
-  return (
-    <Form.Item label={label} {...otherProps}>
-      <AntSelect options={options}/>
-    </Form.Item>
-  );
+  const { __designMode, options = [] } = props;
+  if (__designMode === 'design' && options.length === 0) {
+    return <div style={{ color: '#999', cursor: 'pointer' }}>[下拉框]请在右侧配置中指定可选项</div>;
+  }
+  return <AntSelect options={options} />;
 };
 
 Select.displayName = 'Select';

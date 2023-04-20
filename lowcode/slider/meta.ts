@@ -9,7 +9,8 @@ const Meta: ComponentMetadata = {
     props: [],
     component: {
       isContainer: false,
-      nestingRule: { parentWhitelist: ['Form',"Col"] }
+      nestingRule: { parentWhitelist: ["Form.Item"] },
+      disableBehaviors: "*",
     },
     supports: {
       className: true,
@@ -21,7 +22,13 @@ const Meta: ComponentMetadata = {
       ],
       loop: true,
     },
-    advanced: {},
+    advanced: {
+      callbacks: {
+        onMoveHook() {
+          return false;
+        },
+      },
+    },
   },
   experimental: {
     callbacks: {},
@@ -44,5 +51,5 @@ const snippets: Snippet[] = [
 
 export default {
   ...Meta,
-  snippets,
+  // snippets,
 };

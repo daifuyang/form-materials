@@ -6,12 +6,8 @@ interface SliderProps {
 }
 
 const Slider: FC<SliderProps> = (props: any) => {
-  const { label = '表单项', ...otherProps } = props;
-  return (
-    <Form.Item label={label} {...otherProps}>
-      <AntSlider />
-    </Form.Item>
-  );
+  const {  } = props;
+  return <AntSlider />
 };
 
 Slider.displayName = 'Slider';

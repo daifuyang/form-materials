@@ -1,23 +1,19 @@
 import React, { FC } from 'react';
-import { Form, Checkbox as AntCheckbox } from 'antd';
+import { Checkbox as AntCheckbox } from 'antd';
 
-interface CheckboxProps {}
+interface CheckboxProps {
+  __designMode: string;
+}
 
-const Input: FC<CheckboxProps> = (props: any) => {
-  const { label = '表单项', ...otherProps } = props;
+const Checkbox: FC<CheckboxProps> = (props: any) => {
+  const { __designMode, options = [] } = props;
 
-  const options = [
-    { label: 'Apple', value: 'Apple' },
-    { label: 'Pear', value: 'Pear' },
-    { label: 'Orange', value: 'Orange', disabled: false },
-  ];
+  if (__designMode === 'design' && options.length === 0) {
+    return <div style={{ color: '#999', cursor: 'pointer' }}>[多选框]请在右侧配置中指定可选项</div>;
+  }
 
-  return (
-    <Form.Item label={label} {...otherProps}>
-      <AntCheckbox.Group options={options} defaultValue={['Apple']} />
-    </Form.Item>
-  );
+  return <AntCheckbox.Group {...props} />;
 };
 
-Input.displayName = 'Input';
-export default Input;
+Checkbox.displayName = 'Checkbox';
+export default Checkbox;

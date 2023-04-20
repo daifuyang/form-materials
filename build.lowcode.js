@@ -15,6 +15,10 @@ module.exports = {
           package: name,
           version,
         },
+        noParse: true,
+        singleComponent: true,
+        lowcodeDir: 'lowcode',
+        entryPath: 'src/index.tsx',
       },
     ],
     [

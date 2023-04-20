@@ -1,17 +1,13 @@
-import React, { FC } from 'react';
-import { Form, Input as AntInput } from 'antd';
+import React, { FC, Ref, forwardRef } from 'react';
+import { Input as AntInput } from 'antd';
 
 interface InputProps {
-
+  layout: string;
+  className?: string;
 }
 
-const Input: FC<InputProps> = (props: any) => {
-  const { label = '表单项', ...otherProps } = props;
-  return (
-    <Form.Item label={label} {...otherProps}>
-      <AntInput />
-    </Form.Item>
-  );
+const Input: FC<InputProps> = (props: InputProps) => {
+  return <AntInput {...props} />;
 };
 
 Input.displayName = 'Input';

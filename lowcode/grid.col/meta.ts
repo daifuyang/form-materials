@@ -27,18 +27,6 @@ export default {
       propType: 'number',
     },
     {
-      name: 'pull',
-      title: { label: '右侧偏移', tip: '栅格往右移动格数' },
-      propType: 'number',
-      setter: {
-        componentName: 'NumberSetter',
-        props: {
-          min: 0,
-          max: 24,
-        },
-      },
-    },
-    {
       name: 'push',
       title: { label: '左侧偏移', tip: '栅格往左移动格数' },
       propType: 'number',
@@ -50,6 +38,18 @@ export default {
         },
       },
     },
+    {
+      name: 'pull',
+      title: { label: '右侧偏移', tip: '栅格往右移动格数' },
+      propType: 'number',
+      setter: {
+        componentName: 'NumberSetter',
+        props: {
+          min: 0,
+          max: 24,
+        },
+      },
+    }
   ],
   configure: {
     component: { isContainer: true, nestingRule: { parentWhitelist: ['Row'] } },

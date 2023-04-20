@@ -9,7 +9,8 @@ const Meta: ComponentMetadata = {
     props: [],
     component: {
       isContainer: false,
-      nestingRule: { parentWhitelist: ['Form',"Col"] }
+      nestingRule: { parentWhitelist: ['Form.Item'] },
+      disableBehaviors: '*',
     },
     supports: {
       className: true,
@@ -17,11 +18,17 @@ const Meta: ComponentMetadata = {
       events: [
         {
           name: 'onClick',
-        }
+        },
       ],
       loop: true,
     },
-    advanced: {},
+    advanced: {
+      callbacks: {
+        onMoveHook() {
+          return false;
+        },
+      },
+    },
   },
   experimental: {
     callbacks: {},
@@ -32,8 +39,7 @@ const Meta: ComponentMetadata = {
 const snippets: Snippet[] = [
   {
     title: '开关',
-    screenshot:
-      'https://alifd.alicdn.com/fusion-cool/icons/icon-antd/switch-1.png',
+    screenshot: 'https://alifd.alicdn.com/fusion-cool/icons/icon-antd/switch-1.png',
     schema: {
       componentName: 'Switch',
       props: {},
@@ -44,5 +50,5 @@ const snippets: Snippet[] = [
 
 export default {
   ...Meta,
-  snippets,
+  // snippets,
 };
